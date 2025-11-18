@@ -10,6 +10,28 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
-        vuePlugin(),
+        vuePlugin({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
     ],
+    resolve: {
+        alias: {
+            "@": "/resources/js",
+        },
+    },
+    build: {
+        manifest: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: `assets/[name].js`,
+                chunkFileNames: `assets/[name].js`,
+                assetFileNames: `assets/[name].[ext]`,
+            },
+        },
+    },
 });
