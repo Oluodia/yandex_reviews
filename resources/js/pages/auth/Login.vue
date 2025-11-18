@@ -1,7 +1,7 @@
-<script>
-export default {
-    layout: null,
-};
+<script setup>
+defineOptions({
+  layout: null
+})
 </script>
 
 <script setup>
