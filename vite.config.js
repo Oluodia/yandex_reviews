@@ -9,8 +9,7 @@ export default defineConfig({
             input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
-        tailwindcss(),
-        vuePlugin({
+        vue({
             template: {
                 transformAssetUrls: {
                     base: null,
@@ -19,19 +18,4 @@ export default defineConfig({
             },
         }),
     ],
-    resolve: {
-        alias: {
-            "@": "/resources/js",
-        },
-    },
-    build: {
-        manifest: true,
-        rollupOptions: {
-            output: {
-                entryFileNames: `assets/[name].js`,
-                chunkFileNames: `assets/[name].js`,
-                assetFileNames: `assets/[name].[ext]`,
-            },
-        },
-    },
 });
