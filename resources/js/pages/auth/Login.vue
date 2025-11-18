@@ -1,12 +1,10 @@
 <script setup>
+import { Link, useForm } from "@inertiajs/vue3";
+
+
 defineOptions({
   layout: null
 })
-</script>
-
-<script setup>
-import { Link, useForm } from "@inertiajs/vue3";
-
 const form = useForm({
     login: null,
     password: null,
