@@ -7,21 +7,20 @@ createInertiaApp({
         const pages = import.meta.glob("./pages/**/*.vue", { eager: true });
         const path = `./pages/${name}.vue`;
 
-        // Проверяем, существует ли страница
         if (!pages[path]) {
             throw new Error(`Page not found: ${path}`);
         }
 
         let page = pages[path];
 
-        // Безопасная проверка и добавление layout
         if (page && page.default) {
-            // Если у компонента нет своего layout, устанавливаем layout по умолчанию
-            if (!page.default.layout) {
+            // Явная проверка: layout должен быть именно undefined
+            const hasLayout = page.default.layout !== undefined;
+            
+            if (!hasLayout) {
                 page.default.layout = Layout;
             }
-        } else {
-            console.error("Invalid page module:", page);
+            // Если layout === null или любой другое значение - оставляем как есть
         }
 
         return page;
