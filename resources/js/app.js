@@ -4,8 +4,8 @@ import Layout from "./pages/layouts/Layout.vue";
 
 createInertiaApp({
     resolve: (name) => {
-        const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
-        const path = `./Pages/${name}.vue`;
+        const pages = import.meta.glob("./pages/**/*.vue", { eager: true });
+        const path = `./pages/${name}.vue`;
 
         // Проверяем, существует ли страница
         if (!pages[path]) {
